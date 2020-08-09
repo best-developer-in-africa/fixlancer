@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login | Fixlancer</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="logo_header">
+            <img src="images/logo.png" alt="logo" width="139.59">
+        </div>
+        <div class="login-text">
+            <p>Login to Fixlancer</p>
+        </div>
+        <div class="login-card">
+            <form action="" id="myForm" method="">
+                <input type="text" name="username" id="email" placeholder="Username or Email" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="submit" value="Login" id="submit">
+                
+                <label for="check"><input type="checkbox" name="chexk" id="check" checked>Stay logged in</label>
+                
+            </form>
+                <p class="forget">Forgot <a href="reset.html">Password</a></p>
+                <p class="register">Don't have an account? <a href="register.html">Register Now</a></p>
+        </div>
+        <div class="login-home">
+            <p>Go back to <a href="index.html">Home</a></p>
+        </div>
+    </div>
+    
+</body>
+<script>
+    const loginForm = document.querySelector('#myForm');
+    const username = document.querySelector('#email');
+    const password = document.querySelector('#password');
+    loginForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        validateLogin();
+        console.log(username.value);
+    })
+    
+    function validateLogin(){
+        fetch('https://fixlancer.herokuapp.com/api/users/login',{
+        method: 'POST',
+        body: JSON.stringify({
+                        username: username.value,
+                        password: password.value
+                    }),
+        headers: {
+            'Content-Type': "application/json"
+        }
+    }).then(response =>{
+        return response.json();
+    }).then(text => {
+        console.log(text)
+    }).catch(error => {
+        console.log(error);
+    })
+    }
+</script>
+</html>

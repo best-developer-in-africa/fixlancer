@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <title>Home | Fixlancer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" width="129.13px">
+        </div>
+        <ul class="list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="job">
+                Job Request <i class="fa fa-sort-desc" aria-hidden="true"></i>
+            </a>
+            <ul class="request" id="job">
+                <a href="#">Post a Request</a>
+                <a href="#">My Request</a>
+            </ul>
+        </li>
+            <li class="sales"></li>
+            <li class="orders"></li>
+            <li><a href="#">Start Selling</a></li>
+            <li><a href="affiliate.html">Affiliate</a></li>
+        </ul>
+        <div class="searched">
+            <input name="term1" type="search" class="form-control small" required="" placeholder="Find services e.g logo" >
+            <button class="btn"><i class="fas fa-search text-secondary"></i></button>
+        </div>
+        <div class="icons">
+            <a href="#"><i class="fas fa-envelope fa-fw" style="color:#797979;font-size:1.2em"></i></a>
+            <a href="#"><i class="fas fa-bell fa-fw" style="color:#797979;font-size:1.2em"></i></a>
+        </div>
+        <div class="avatar">
+            <a href="#">
+                <p class="hello"></p>
+                <img src="images/iconfinder_arrow_sans_down_103299.png" width="10px" alt="icon" >
+            </a>
+            <ul id="hello">
+                <li><a href="#">View Profile</a></li>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+        <div class="balance">
+            <a href="#">
+                <p class="ok">
+                    <i class="fa fa-sort-desc" aria-hidden="true" style="color: #f27415;margin-bottom: 10px;"></i>
+                </p>
+            </a>
+            <ul class="mylist" id="ok">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Request Withdrawal</a></li>
+                <li><a href="#">Deposit Funds</a></li>
+                <li><a href="https://wa.me/message/ND5RHZO3QN3RM1">Buy ChopBarh Vouchers
+                    <img style="width:20px;border-radius:4px" src="https://www.fixlancer.com/wp-content/themes/fixFIX/cb.png"></a>
+                </li> 
+            </ul>
+        </div>
+    </header>
+    <section>
+        <div class="box-shadow">
+            <main>
+                <div class="main-img">
+                    <a href="#">
+                        <div class="img">
+                            <img src="images/cat1.jpg" alt="img" width="353.33px" height="85px" style="border-radius: 8px;">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="img">
+                            <img src="images/cat3.jpg" alt="img" width="353.33px" height="85px" style="border-radius: 8px;">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="img">
+                            <img src="images/cat2.jpg" alt="img" width="353.33px" height="85px" style="border-radius: 8px;">
+                        </div>
+                    </a>
+                </div>
+                <div class="categories">
+                    <p>Categories</p>
+                </div>
+                <div class="layout"></div>
+                <div class="general">
+                    <div class="summary"></div>
+                </div>
+                <div class="recommd">
+                    <p>Recommended For You</p>
+                </div>
+                <div class="services">
+                    <div class="hire">
+                        <p>Looking to hire?</p>
+                        <div class="btn-post">
+                            <a href="#">Post a Request</a>
+                        </div>
+                    </div>
+                    <div class="sell">
+                        <p>Looking for Work?</p>
+                        <div class="btn-post">
+                            <a href="#">Start Selling</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="search">
+                    <div class="inp">
+                        <p>Find More Services</p>
+                        <form class="inp1">
+                            <input type="search" name="search" id="searchs" placeholder="Try 'website'">
+                            <button><i class="fas fa-search text-secondary"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <ul class="footer-list">
+                    <li><a href="#">Buy ChopBarh Vouchers </a>|</li>
+                    <li><a href="#"> Start Selling </a>|</li>
+                    <li><a href="#"> Post Job Request </a>|</li>
+                    <li><a href="#"> About Us </a>|</li>
+                    <li><a href="#"> How it works </a>|</li>
+                    <li><a href="#"> FAQS </a>|</li>
+                    <li><a href="#"> Terms </a>|</li>
+                    <li><a href="#"> Affiliate Program </a>|</li>
+                    <li><a href="#"> Contact Us </a>|</li>
+                </ul>
+                <p>&copy; 2020 Fixlancer Marketplace</p>
+            </footer>
+        </div>
+
+    </section>
+</body>
+<script>
+    //CATEGORY DROPDOWN//
+    const img = document.querySelector('.main-img')
+    function fetchData(){
+        fetch("https://fixlancer.herokuapp.com/api/categories").then(response =>{
+            if(!response.ok){
+                throw Error('Error');
+            }
+            return response.json();
+        }).then(obj => {
+            const arr = obj.data
+            const featured = document.querySelector('.layout');
+            const html = arr.map((fix,index) =>{
+                return `
+                    <div class="each-category">
+                            <a href="#" class="cat">${fix['name']}
+                                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                            </a>
+                            <div class="list-items"  id=${'a'+index}>
+                                <ul>
+                                ${fix['subcat'].map(x =>{ 
+                                    return `<li><a href="#">${x.name}</a></li>`
+                                }).join('')
+                                }
+                                </ul>
+                            </div>
+                    </div>
+                `;
+            }).join('')
+            featured.insertAdjacentHTML('afterbegin',html);
+        }).catch(err =>{
+            console.log(err);
+        })
+    }
+    fetchData();
+
+    //////////////////////////
+    
+    var isDropped = false;
+    let currentId;
+    const category = document.querySelector('.job');
+    console.log(category);
+    function dropDown(e){
+        e.preventDefault();
+        const listItem = document.querySelector(`#${e.target.nextElementSibling.id}`);
+        listItem.setAttribute('style','display:block');
+        isDropped = true;
+        currentId = e.target.nextElementSibling.id;
+    }
+
+    function removeDropDown(e){
+        e.preventDefault();
+        const listItem = document.querySelector(`#${currentId}`);
+        listItem.removeAttribute('style');
+        isDropped = false;
+        currentId = undefined;
+    }
+
+    document.addEventListener('click',(e)=>{
+        if(isDropped && e.target.className === 'cat'){
+            if(e.target.nextElementSibling.id !== currentId){
+                removeDropDown(e);
+                dropDown(e);
+            }else{
+                removeDropDown(e);
+            }
+        }else if(isDropped && e.target.className !== 'cat'){
+            removeDropDown(e);
+        }else if(!isDropped && e.target.className === 'cat'){
+           dropDown(e);
+        }
+    })
+    ///////////////////////////
+    //////////////////////////
+    //////////////////////////
+    function fetchSummary(){
+        fetch("https://fixlancer.herokuapp.com/api/users/wilson001").then(response =>{
+            if(!response.ok){
+                throw Error('Error');
+            }
+            return response.json();
+        }).then(obj => {
+            const data = obj.data
+            const sales = document.querySelector('.sales')
+            const orders = document.querySelector('.orders')
+            const balance = document.querySelector('.ok')
+            const summary = document.querySelector('.summary');
+            const general = document.querySelector('.general');
+            const user = document.querySelector('.hello');
+            const icons = [
+                "fas fa-comments fa-2x",
+                "fas fa-money fa-2x text-gray-300",
+                "fas fa-shopping-cart fa-2x text-gray-300",
+                "fas fa-sort-amount-up fa-2x text-gray-300"
+            ];
+            const html1 = data['summary'].map((sum,index) =>{
+                return `
+                   <a href="#" <div class="summary-box" style="${index === 0 ? 'border-left: 0.25rem solid #e74a3b;': ''}">
+                        <div class = "sumtext">
+                            <p class="sum-para">${sum[0]}</p>
+                            <p class="price" style="${index === 0 ? 'color: #e74a3b': 'color: #224abe;'}">
+                                ${index === 1 ? `₦${sum[1]}`: `${sum[1]}`}
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="${icons[index]}" style="color: #ddd; font-size: 32px"></i>
+                        </div>
+                    </div> </a>
+                `;
+            }).join('')
+            summary.insertAdjacentHTML('afterbegin',html1);
+
+            const html2 = `
+                <div class="bio-box">
+                    <div class="userAvatar">
+                        <p>${data['username'][0]}</p>
+                    </div>
+                    <div class="bio-info">
+                        <p class="user"><a href="#">${data['username']}</a></p>
+                        <p class="rating">${data['rating']}% Ratings</p>
+                        <div class="line"></div>
+                        <p class="bio-status">
+                            ${data['bio'] === "" ? "No bio yet..." : data['bio']}
+                        </p>
+                        <a href="bio.html">
+                            <div class="edit">
+                                <p>Edit Profile</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            `;
+            general.insertAdjacentHTML('afterbegin',html2);
+
+            const html3 = `
+                <a href="#">Sales(${data['ungoing_sales']})</a>
+            `;
+            sales.insertAdjacentHTML('afterbegin',html3);
+
+            const html4 = `
+                <a href="#">Orders(${data['ungoing_sales']})</a>
+            `;
+            orders.insertAdjacentHTML('afterbegin',html4);
+            const html5 = `
+                     ₦${data['summary'][1][1]}
+                `;
+            balance.insertAdjacentText('afterbegin',html5)
+            const text = `
+                ${data['username'][0]}
+            `
+            user.insertAdjacentText('afterbegin',text)
+        }).catch(err =>{
+            console.log(err);
+        })
+    }
+    fetchSummary();
+     ///////////////////////////
+    //////////////////////////
+  
+    ///////////////////////////////////////
+    let drop = false;
+    let mainId;
+    let job = document.querySelector('#job');
+    let avatar = document.querySelector('#avatar');
+    let balance = document.querySelector('#mylist');
+
+    document.addEventListener('click',(e)=>{
+        if((e.target.className === 'job' || e.target.className === 'hello' || e.target.className === 'ok') && !drop){
+            let list = document.querySelector(`#${e.target.className}`);
+            list.setAttribute('style', 'display:block');
+            drop = true;
+            mainId = list;
+        }else if(drop && e.target.className === mainId.id){
+            mainId.removeAttribute('style');
+            drop = false;
+        }else if((e.target.className === 'job' || e.target.className === 'hello' || e.target.className === 'ok') && drop){
+            mainId.removeAttribute('style');
+            let list = document.querySelector(`#${e.target.className}`);
+            list.setAttribute('style', 'display:block');
+            drop = true;
+            mainId = list;
+        }else if(drop){
+            mainId.removeAttribute('style');
+        }
+    })
+</script>
+</html>

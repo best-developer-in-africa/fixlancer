@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <title>Create Account - Fixlancer | Fixlancer</title>
+</head>
+<body>
+    <div class="main-register">
+        <div class="logo_header">
+            <img src="images/logo.png" alt="logo" width="139.59">
+        </div>
+        <div class="login-text">
+            <img src="images/iconfinder_new-24_103173.svg" alt="edit_img">
+            <p>Create Account</p>
+        </div>
+        <div class="register-card">
+            <form action="" id="myForm" method="" autocomplete="off">
+                <p class="err1">Username must be minimum of 4 characters and maximum 20 characters</p>
+                <p class="err2">Username must not contain @</p>
+                <p class="err3">Username must not include space</p>
+                <p class="err4">Username must start with an alphabet</p>
+                <p class="err">Username already exist</p>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+                <div class="err5">Invalid email address</div>
+                <p class="errs">Email already exist</p>
+                <input type="email" name="email" id="email" placeholder="Email" required autocomplete="new-password">
+                <select name="cars" id="countries">
+                </select>
+                  <p class="err6">City must contain only alphabets</p>
+                <input type="tel" name="city" id="city" placeholder="City" required>
+                <p class="err7">Input a valid Phone Number</p>
+                <p class="errp">Phone Number already exist</p>
+                <input type="tel" name="phone" id="phone" placeholder="Mobile number" required autocomplete="new-password">
+                <p class="err8">Password must be minimum of 5 characters and maximum of 20 characters</p>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <p class="err9">Password does not match</p>
+                <input type="password" name="confirm_password" id="con_password" placeholder="Retype Password" required>
+                <div class="captcha">
+                    <input type="checkbox" name="solved" id="solved" value="true">
+                    <p>I'm not a robot </p>
+                    <img src="images/captcha.png" alt="captcha" width="50px">
+                </div>
+                <p class="err10">Confirm you are not a robot</p>
+                <input type="submit" value="Create Account" id="submit" >
+                <p class="err11">Form not submitted. Ensure you fill the forms correctly</p>
+            </form>
+                <div class="agree">
+                    <p>By clicking create account you agree to our <a href="#">Terms & Conditions</a> 
+                    </p>
+                </div>
+        </div>
+        <div class="register-home">
+            <p>Go back to <a href="index.html">Home</a> | <a href="login.html">Login</a></p>
+        </div>
+    </div>
+</body>
+
+<script>
+    const usernameObj = {
+        _username: '',
+        _status: false,
+        setUsername: function(value){
+            this._username = value;
+        },
+        getUsername: function(){
+            return this._username;
+        },
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        }
+    }
+    //Username Object 
+
+    const emailObject = {
+        _email: '',
+        _status: false,
+        setEmail: function(value){
+            this._email = value
+        },
+        getEmail: function(){
+            return this._email;
+        },
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        }
+    }
+
+    //Email Object
+    const cityObject = {
+        _city: '',
+        _status: false,
+        setCity: function(value){
+            this._city = value
+        },
+        getCity: function(){
+            return this._city;
+        },
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        }
+    }
+    //City Object
+
+    const countryObject = {
+        _country: 'Nigeria',
+        _status: true,
+        setCountry: function(value){
+            this._country = value
+        },
+        getCountry: function(){
+            return this._country;
+        },
+        getStatus: function(){
+            return this._status;
+        }
+    }
+    //Country Object
+
+    const phoneObject={
+        _phoneNumber: '',
+        _status: false,
+        setNumber: function(value){
+            this._phoneNumber = value
+        },
+        getNumber: function(){
+            return this._phoneNumber;
+        },
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        }
+    }
+    //Phone Object
+
+    const passwordObj={
+        _password: '',
+        _status: false,
+        setPassword: function(value){
+            this._password = value
+        },
+        getPassword: function(){
+            return this._password;
+        },
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        } 
+    }
+//Password Object
+    
+    const conPassObj={
+        _conPassword: '',
+        _status: false,
+        setConPassword: function(value){
+            this._conPassword = value
+        },
+        getConPassword: function(){
+            return this._conPassword;
+        },
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        } 
+    }
+
+    //Captcha Object
+    const captchaObj = {
+        _status: false,
+        setStatus: function(val){
+            this._status = val;
+        },
+        getStatus: function(){
+            return this._status;
+        } 
+    }
+
+
+
+
+
+    const registerCard = document.querySelector('.register-card');
+    registerCard.addEventListener('click',(e)=>{
+        if(e.target.id === 'username'){
+            const alpha= 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+                const err1 = document.querySelector('.err1');
+                const err2 = document.querySelector('.err2');
+                const err3 = document.querySelector('.err3');
+                const err4 = document.querySelector('.err4');
+                const err = document.querySelector('.err');
+            e.target.addEventListener('keyup',(e)=>{
+                usernameObj.setUsername(e.target.value);
+                if(alpha.includes(usernameObj.getUsername()[0])){
+                    err4.removeAttribute('style');
+                    if(usernameObj.getUsername().length < 5 || usernameObj.getUsername().length > 19){
+                    if(!usernameObj.getUsername().includes('@')){
+                        e.target.setAttribute('class','user-error');
+                        err1.setAttribute('style','display:block');
+                        usernameObj.setStatus(false);
+                    }else{
+                        e.target.setAttribute('class','user-error');
+                        err2.setAttribute('style','display:block');
+                        usernameObj.setStatus(false);
+                    }
+                }else if(usernameObj.getUsername().includes('@')){
+                    e.target.setAttribute('class','user-error');
+                    err2.setAttribute('style','display:block');
+                    usernameObj.setStatus(false);
+                }else if(usernameObj.getUsername().includes(' ')){
+                    e.target.setAttribute('class','user-error');
+                    err3.setAttribute('style','display:block');
+                    usernameObj.setStatus(false);
+                }
+                else{
+                    getUserData(e.target.value).then(data => {
+                        if(data){
+                            e.target.setAttribute('class','user-error');
+                            err.setAttribute('style','display:block');
+                            usernameObj.setStatus(false);
+                        }else{
+                            e.target.removeAttribute('class','user-error')
+                            e.target.setAttribute('class','user-correct')
+                            err1.removeAttribute('style');
+                            err2.removeAttribute('style');
+                            err3.removeAttribute('style');
+                            err.removeAttribute('style');
+                            usernameObj.setStatus(true);
+                        }
+                    })
+                    
+                }
+                }else{
+                    e.target.setAttribute('class','user-error');
+                    err4.setAttribute('style', 'display:block');
+                    usernameObj.setStatus(false);
+                }
+            })
+        }else if(e.target.id === 'email'){
+            const err5 = document.querySelector('.err5');
+            const errs = document.querySelector('.errs');
+            e.target.addEventListener('keyup',(e)=>{
+                emailObject.setEmail(e.target.value);
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailObject.getEmail())){
+                    validateEmail(emailObject.getEmail()).then(data => {
+                        if(data){
+                            e.target.setAttribute('class','user-error');
+                            errs.setAttribute('style','display:block');
+                            err5.removeAttribute('style');
+                            emailObject.setStatus(false);
+                        }else{
+                            e.target.removeAttribute('class','user-error')
+                            e.target.setAttribute('class','user-correct')
+                            errs.removeAttribute('style');
+                            err5.removeAttribute('style');
+                            emailObject.setStatus(true);
+                        }
+                    })
+                }else{
+                    e.target.setAttribute('class','user-error');
+                    err5.setAttribute('style','display:block');
+                    errs.removeAttribute('style');
+                    emailObject.setStatus(false);
+                }
+            })
+        }else if(e.target.id === 'city'){
+            const err6 = document.querySelector('.err6');
+            e.target.addEventListener('keyup',(e)=>{
+                cityObject.setCity(e.target.value);
+                if(cityObject.getCity().match(/^[A-Za-z]+$/) || cityObject.getCity().includes(' ')){
+                    e.target.removeAttribute('class','user-error')
+                    e.target.setAttribute('class','user-correct')
+                    err6.removeAttribute('style');
+                    cityObject.setStatus(true);
+                }else{
+                    e.target.setAttribute('class','user-error');
+                    err6.setAttribute('style','display:block');
+                    cityObject.setStatus(false);
+                }
+            })
+        }else if(e.target.id === 'countries'){
+            countryObject.setCountry(e.target.value);
+            console.log(e.target.value);
+            e.target.setAttribute('style','border:2px solid #3bdf13')
+        }else if(e.target.id === 'phone'){
+            const errp = document.querySelector('.errp');
+            const err7 = document.querySelector('.err7');
+            e.target.addEventListener('keyup',(e)=>{
+                phoneObject.setNumber(e.target.value);
+                if(phoneObject.getNumber().match(/^[0-9]+$/)){
+                    validatePhone(phoneObject.getNumber()).then(data => {
+                        if(data){
+                            e.target.setAttribute('class','user-error');
+                            errp.setAttribute('style','display:block');
+                            err7.removeAttribute('style');
+                            phoneObject.setStatus(false);
+                        }else{
+                            e.target.removeAttribute('class','user-error')
+                            e.target.setAttribute('class','user-correct')
+                            errp.removeAttribute('style');
+                            err7.removeAttribute('style');
+                            phoneObject.setStatus(true);
+                        }
+                    })
+            }else{
+                    e.target.setAttribute('class','user-error');
+                    err7.setAttribute('style','display:block');
+                    errp.removeAttribute('style');
+                    phoneObject.setStatus(false);
+                }
+            })   
+        }else if(e.target.id === 'password'){
+            const err8 = document.querySelector('.err8');
+            e.target.addEventListener('keyup',(e)=>{
+                passwordObj.setPassword(e.target.value);
+                if(passwordObj.getPassword().match(/^[0-9a-zA-Z].{4,20}$/)){
+                    e.target.removeAttribute('class','user-error')
+                    e.target.setAttribute('class','user-correct')
+                    err8.removeAttribute('style');
+                    passwordObj.setStatus(true);
+                }else{
+                    e.target.setAttribute('class','user-error');
+                    err8.setAttribute('style','display:block');
+                    passwordObj.setStatus(false);
+                }
+            })
+        }else if(e.target.id === 'con_password'){
+            const err9 = document.querySelector('.err9');
+            e.target.addEventListener('keyup',(e)=>{
+                conPassObj.setConPassword(e.target.value);
+                if(passwordObj.getPassword() === conPassObj.getConPassword()){
+                    e.target.removeAttribute('class','user-error')
+                    e.target.setAttribute('class','user-correct')
+                    err9.removeAttribute('style');
+                    conPassObj.setStatus(true);
+                }else{
+                    e.target.setAttribute('class','user-error');
+                    err9.setAttribute('style','display:block');
+                    conPassObj.setStatus(false);
+                }
+            })
+        }else if(e.target.id === 'solved'){
+            const err10 = document.querySelector('.err10');
+            if(e.target.checked){
+                err10.setAttribute('style','display:none');
+                captchaObj.setStatus(true);
+            }else{
+                err10.setAttribute('style','display:block');
+                captchaObj.setStatus(false)
+            }
+        }
+    })
+    //https://gist.githubusercontent.com/keeguon/2310008/raw/bdc2ce1c1e3f28f9cab5b4393c7549f38361be4e/countries.json
+   //https://gist.githubusercontent.com/Goles/3196253/raw/9ca4e7e62ea5ad935bb3580dc0a07d9df033b451/CountryCodes.json
+   ///////Country Object
+    function fetchData(){
+        fetch("https://raw.githubusercontent.com/samayo/country-json/master/src/country-by-name.json").then(response =>{
+            if(!response.ok){
+                throw Error('Error');
+            }
+            return response.json();
+        }).then(data => {
+            const arr = data
+            const featured = document.querySelector('#countries');
+            const html = arr.map(country =>{
+                return country['country'] ==='Nigeria'? `<option value="Nigeria" selected >Nigeria</option>`:`<option value=${country['country']} >${country['country']}</option>`
+            });
+            featured.insertAdjacentHTML('afterbegin',html);
+        }).catch(err =>{
+            console.log(err);
+        })
+    }
+    fetchData();
+    ////////////////////////
+
+ 
+        async function getUserData(value){
+            try{
+                const resp = await fetch(`https://fixlancer.herokuapp.com/api/users/${value}`)
+                var data = await resp.json()
+                return data['found']
+            } catch(err){
+                console.log(err);
+            }
+        }
+    //////////////////////////
+    async function validateEmail(value){
+            try{
+                const resp = await fetch(`https://fixlancer.herokuapp.com/api/users/email`,{
+                    method: 'post',
+                    body: JSON.stringify({
+                        email: value
+                    }),
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                })
+                var data = await resp.json()
+                return data['found']
+            } catch(err){
+                console.log(err);
+            }
+    }
+    // console.log(validateEmail('wilsonchinedu001@gmail.com'))
+    //////////////////////////
+    async function validatePhone(value){
+            try{
+                const resp = await fetch(`https://fixlancer.herokuapp.com/api/users/phone`,{
+                    method: 'post',
+                    body: JSON.stringify({
+                        phone: value
+                    }),
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                })
+                var data = await resp.json()
+                return data['found']
+            } catch(err){
+                console.log(err);
+            }
+    }
+    //////////////////////////
+
+myForm.addEventListener('submit',(e)=>{
+    const err11 = document.querySelector('.err11');
+    e.preventDefault();
+    console.log(e);
+    const isBelowThreshold = (currentValue) => currentValue ;
+    const status = [
+        usernameObj.getStatus(),
+        emailObject.getStatus(),
+        countryObject.getStatus(),
+        cityObject.getStatus(),
+        phoneObject.getStatus(),
+        passwordObj.getStatus(),
+        conPassObj.getStatus(),
+        captchaObj.getStatus()
+    ];
+    console.log(status);
+    if(status.every(isBelowThreshold)){
+        err11.removeAttribute('style');
+        fetch('https://fixlancer.herokuapp.com/api/users/register',{
+        method: 'post',
+        body: JSON.stringify({
+            username: usernameObj.getUsername(),
+            email: emailObject.getEmail(),
+            country: countryObject.getCountry(),
+            city: cityObject.getCity(),
+            phone: phoneObject.getNumber(),
+            password: passwordObj.getPassword(),
+            confirm_password: conPassObj.getConPassword(),
+            solved: captchaObj.getStatus()
+        }),
+        headers: {
+            'Content-Type': "application/json"
+        }
+    }).then(response =>{
+        return response.json();
+    }).then(text => {
+        console.log(text);
+    }).catch(error => {
+        console.log(error);
+    })
+    }else{
+        err11.setAttribute('style','display:block');
+    }
+
+    console.log(status.every(isBelowThreshold));
+    // const formData = new FormData(this.myForm);
+    // console.log(formData)
+  
+});
+</script>
+</html>

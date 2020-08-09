@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="bio.css">
+    <title>Personal Info | Fixlancer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" width="129.13px">
+        </div>
+        <ul class="list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="job">
+                Job Request <i class="fa fa-sort-desc" aria-hidden="true"></i>
+            </a>
+            <ul class="request" id="job">
+                <a href="#">Post a Request</a>
+                <a href="#">My Request</a>
+            </ul>
+        </li>
+            <li class="sales"></li>
+            <li class="orders"></li>
+            <li><a href="#">Start Selling</a></li>
+            <li><a href="affiliate.html">Affiliate</a></li>
+        </ul>
+        <div class="searched">
+            <input name="term1" type="search" class="form-control small" required="" placeholder="Find services e.g logo" >
+            <button class="btn"><i class="fas fa-search text-secondary"></i></button>
+        </div>
+        <div class="icons">
+            <a href="#"><i class="fas fa-envelope fa-fw" style="color:#797979;font-size:1.2em"></i></a>
+            <a href="#"><i class="fas fa-bell fa-fw" style="color:#797979;font-size:1.2em"></i></a>
+        </div>
+        <div class="avatar">
+            <a href="#">
+                <p class="hello"></p>
+                <img src="images/iconfinder_arrow_sans_down_103299.png" width="10px" alt="icon" >
+            </a>
+            <ul id="hello">
+                <li><a href="#">View Profile</a></li>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+        <div class="balance">
+            <a href="#">
+                <p class="ok">
+                    <i class="fa fa-sort-desc" aria-hidden="true" style="color: #f27415;margin-bottom: 10px;"></i>
+                </p>
+            </a>
+            <ul class="mylist" id="ok">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Request Withdrawal</a></li>
+                <li><a href="#">Deposit Funds</a></li>
+                <li><a href="https://wa.me/message/ND5RHZO3QN3RM1">Buy ChopBarh Vouchers
+                    <img style="width:20px;border-radius:4px" src="https://www.fixlancer.com/wp-content/themes/fixFIX/cb.png"></a>
+                </li> 
+            </ul>
+        </div>
+    </header>
+    <main>
+        <p>Edit Personal Info</p>
+        <div class="details">
+            <div class="personal">
+                <div class="p-head">
+                    <p>Personal Details</p>
+                </div>
+                <form action="">
+                    <label for="username">Username:</label><br>
+                    <input type="text" name="username" size="40" id="username">
+                    <font color="black" size="1px">* You can change your username 3 times maximum.</font>
+                    <input type="text" placeholder="Full Name" size="40" id="fullname">
+                    <input type="text" size="40" id="city">
+                    <input type="text" name="" id="number" size="40">
+                    <font color="red" size="2px">* For sms notifications</font>
+                    <textarea name="area" id="area" cols="30" rows="10" placeholder="Bio"></textarea>
+                    <font color="red" size="2px">* Posting of contact informations may result in permanent blocking of your account</font>
+                </form>
+            </div>
+            <div class="other">
+                <div class="p-head">
+                    <p>Other Details</p>
+                </div>
+                <form action="">
+                    <label for="avatar">Profile Picture</label><br>
+                    <div> 
+                        <input style="cursor:pointer !important;font-size:14px;float:left;width:100%;margin-bottom:10px; border-style: none; " type="file" name="avatar" >
+                    </div>
+                    <input type="password" name="password" id="">
+                    <input type="password" name="re_password" placeholder="Repeat Password" id="">
+                    <p style="width:100%;float:left;margin-top:25px; color: #5a5c69;"> 
+                        <i class="fa fa-university"></i> Bank Transfer Details</p>
+                    <input type="text" name="account name" id="" placeholder="Account Name">
+                    <input type="number" name="account_num" id="" placeholder="Account No.">
+                    <input type="text" placeholder="Name of Bank">
+                </form>
+            </div>
+            <div class="alert">
+                <div class="card-header">
+                    <h6>
+                    Receive alerts when a new Job Request is posted in these categories</h6>
+                </div>
+                <div class="form" >
+                    <div class="input">
+                        <input type="checkbox" name="digital" id="">
+                        <label for="digital">Digital Marketing</label>
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" name="graphics" id="">
+                        <label for="graphics">Graphics & Design</label>
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" name="music" id="">
+                        <label for="music">Music & Audio</label>
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" name="video" id="">
+                        <label for="video">Video & Animations</label>
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" name="tech" id="">
+                        <label for="tech">Programming & Tech</label>
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" name="writing" id="">
+                        <label for="writing">Writing</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <input type="checkbox" name="notif" value="1"> Unsubscribe from 'New Job Request' notifications<br><br>
+                </div>
+        </div>
+        <input type="submit" width="100%" style="background-color: #1cc88a; color: white;" name="save-info" value="Save">
+    </main>
+    <footer>
+        <ul class="footer-list">
+            <li><a href="#">Buy ChopBarh Vouchers </a>|</li>
+            <li><a href="#"> Start Selling </a>|</li>
+            <li><a href="#"> Post Job Request </a>|</li>
+            <li><a href="#"> About Us </a>|</li>
+            <li><a href="#"> How it works </a>|</li>
+            <li><a href="#"> FAQS </a>|</li>
+            <li><a href="#"> Terms </a>|</li>
+            <li><a href="#"> Affiliate Program </a>|</li>
+            <li><a href="#"> Contact Us </a>|</li>
+        </ul>
+        <p>&copy; 2020 Fixlancer Marketplace</p>
+    </footer>
+</body>
+<script>
+     ///////////////////////////////////////
+     let drop = false;
+    let mainId;
+    let job = document.querySelector('#job');
+    let avatar = document.querySelector('#avatar');
+    let balance = document.querySelector('#mylist');
+
+    document.addEventListener('click',(e)=>{
+        if((e.target.className === 'job' || e.target.className === 'hello' || e.target.className === 'ok') && !drop){
+            let list = document.querySelector(`#${e.target.className}`);
+            list.setAttribute('style', 'display:block');
+            drop = true;
+            mainId = list;
+        }else if(drop && e.target.className === mainId.id){
+            mainId.removeAttribute('style');
+            drop = false;
+        }else if((e.target.className === 'job' || e.target.className === 'hello' || e.target.className === 'ok') && drop){
+            mainId.removeAttribute('style');
+            let list = document.querySelector(`#${e.target.className}`);
+            list.setAttribute('style', 'display:block');
+            drop = true;
+            mainId = list;
+        }else if(drop){
+            mainId.removeAttribute('style');
+        }
+    })
+    //////////////////////////////
+    function fetchSummary(){
+        fetch("https://fixlancer.herokuapp.com/api/users/wilson001?content=full").then(response =>{
+            if(!response.ok){
+                throw Error('Error');
+            }
+            return response.json();
+        }).then(obj => {
+            const data = obj.data
+            const sales = document.querySelector('.sales')
+            const orders = document.querySelector('.orders')
+            const balance = document.querySelector('.ok')
+            const user = document.querySelector('.hello');
+            const username = document.querySelector('#username')
+            const city = document.querySelector('#city')
+            const number = document.querySelector('#number')
+        const html3 = `
+                <a href="#">Sales(${data['active_sales']})</a>
+            `;
+            sales.insertAdjacentHTML('afterbegin',html3);
+
+        const html4 = `
+                <a href="#">Orders(${data['active_orders']})</a>
+            `;
+            orders.insertAdjacentHTML('afterbegin',html4);
+        const html5 = `
+                     ₦${data['balance']}
+                `;
+            balance.insertAdjacentText('afterbegin',html5)
+        const text = `
+                ${data['username'][0]}
+            `
+            user.insertAdjacentText('afterbegin',text)
+        username.value = data['username']
+        city.value = data['city']
+        number.value = data['phone']
+        }).catch(err =>{
+            console.log(err);
+        })
+    }
+    fetchSummary();
+    /////////////////////////////
+    const form = document.querySelector('.form');
+    const input = Array.from(document.querySelectorAll('.form input'))
+    const tValue = [];
+    
+    function filterArr(){
+        var arr = input.filter(function(x) {
+            return x.checked === true
+        })
+        if(arr.length === 2){
+            input.forEach(inp =>{
+            if(!inp.checked){
+                inp.setAttribute('disabled','true');
+            }
+        })
+        }else{
+            input.forEach(inp =>{
+            if(!inp.checked){
+                inp.removeAttribute('disabled');
+            }
+        })
+        }
+    }
+
+    form.addEventListener('click',(e)=>{
+        if(e.target.type === "checkbox"){
+            filterArr()
+        }
+        
+    })
+
+</script>
+</html>
